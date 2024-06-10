@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_10_053459) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_10_054917) do
+  create_table "coworking_spaces", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address", null: false
+    t.text "description", null: false
+    t.decimal "price", precision: 10, scale: 2, null: false
+    t.text "amenities", null: false
+    t.bigint "admin_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "fk_rails_fe83643e4c"
+  end
+
+  create_table "reservations", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coworking_space_id", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coworking_space_id"], name: "fk_rails_748ac05e45"
+    t.index ["user_id"], name: "fk_rails_48a92fce51"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -20,4 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_10_053459) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "coworking_spaces", "users", column: "admin_id"
+  add_foreign_key "reservations", "coworking_spaces"
+  add_foreign_key "reservations", "users"
 end
