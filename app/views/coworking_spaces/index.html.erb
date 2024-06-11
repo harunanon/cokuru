@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="text-center">COKURU COWORKING SPACES</h1>
+  <%= image_tag 'cokuru-top.jpeg', class: 'top-image mx-auto d-block' %>
+  <li><%= link_to 'ログイン',new_user_session_path, class: "login" %></li>
+  <li><%= link_to '新規登録',new_user_registration_path, class: "sign-up" %></li>
+</div>
+
+
+<% @coworking_spaces.each do |coworking_space| %>
+  <div class="coworking-space">
+    <%= image_tag 'cokuru-top.jpeg' if coworking_space.image.present? %>
+    <h2><%= coworking_space.name %></h2>
+    <p><%= coworking_space.address %></p>
+    <p><%= number_to_currency(coworking_space.price) %></p>
+    <!-- 他のコワーキングスペースの詳細情報を表示する場合の例 -->
+    <p><%= coworking_space.description %></p>
+    <p>Amenities: <%= coworking_space.amenities %></p>
+    <!-- 画像の表示など、必要に応じて他の詳細情報を表示 -->
+    <%= link_to "View Details", coworking_space %>
+  </div>
+<% end %>

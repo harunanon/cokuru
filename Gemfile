@@ -76,3 +76,9 @@ group :production do
 end
 
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'devise'
+
+gem 'sassc'
+
+gem 'bootstrap', '~> 5.0.0'

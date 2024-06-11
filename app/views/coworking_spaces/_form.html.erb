@@ -1,0 +1,8 @@
+<%= form_with(model: coworking_space, local: true) do |form| %>
+  <!-- 他のフィールド -->
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+  <!-- 他のフィールド -->
+<% end %>

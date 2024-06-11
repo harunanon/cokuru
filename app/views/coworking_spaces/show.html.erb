@@ -1,0 +1,9 @@
+<h1><%= @coworking_space.name %></h1>
+
+<p><%= @coworking_space.address %></p>
+<p><%= @coworking_space.description %></p>
+<p><%= @coworking_space.price %> USD per hour</p>
+<p>Amenities: <%= @coworking_space.amenities %></p>
+
+<%= link_to 'Reserve this space', new_coworking_space_reservation_path(@coworking_space) %>
+<%= link_to 'Back to list', coworking_spaces_path %>
