@@ -4,7 +4,7 @@
 | id                 | bigint   | null:false,primary key   |
 | name               | string   | null:false               |
 | email              | string   | null:false, unique: true |
-| password_digest    | string   | null:false               |
+| password           | string   | null:false               |
 | created_at         | datetime | null:false               |
 | updated_at         | datetime | null:false               |
 
