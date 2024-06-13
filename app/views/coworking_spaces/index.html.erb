@@ -1,10 +1,12 @@
-<div class="container">
-  <h1 class="text-center">COKURU COWORKING SPACES</h1>
-  <%= image_tag 'cokuru-top.jpeg', class: 'top-image mx-auto d-block' %>
-  <li><%= link_to 'ログイン',new_user_session_path, class: "login" %></li>
-  <li><%= link_to '新規登録',new_user_registration_path, class: "sign-up" %></li>
+<div class="full-screen-image">
+  <%= image_tag 'cokuru-top.jpeg' %>
 </div>
 
+<div class="container">
+  <h1 class="text-center">COKURU COWORKING SPACES</h1>
+  <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+  <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+</div>
 
 <% @coworking_spaces.each do |coworking_space| %>
   <div class="coworking-space">
