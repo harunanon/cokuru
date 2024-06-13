@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_10_103427) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_12_061239) do
   create_table "coworking_spaces", charset: "utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "address", null: false
-    t.text "description", null: false
-    t.decimal "price", precision: 10, scale: 2, null: false
-    t.text "amenities", null: false
-    t.bigint "admin_id", null: false
+    t.string "name"
+    t.text "description"
+    t.string "location"
+    t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_10_103427) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

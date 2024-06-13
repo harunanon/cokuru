@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'coworking_spaces#index'
+  #get '/login', to: 'sessions#new', as: :login
 
   resources :users, only: [:new, :create] # 新規登録用のルートを追加
-  resources :sessions, only: [:new, :create, :destroy]
+  #resources :sessions, only: [:new, :create, :destroy]
 
   resources :coworking_spaces do
     resources :reservations, only: [:new, :create]

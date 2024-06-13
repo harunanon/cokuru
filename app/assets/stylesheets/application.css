@@ -15,12 +15,31 @@
  *= require_self
  */
 
- .container {
+
+/* 全体のスタイル */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: url('background_image.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content {
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を半透明にする */
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.top-image {
-  width: 100%;
-  height: auto;
+.logo img {
+  max-width: 200px; /* ロゴのサイズを調整 */
+  margin-bottom: 20px;
 }
-
