@@ -2,8 +2,7 @@
   <div class="container">
     <h2>Log in</h2>
 
-
-    <%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true do |f| %>
+    <%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true, data: { turbo: false } do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
@@ -24,7 +23,7 @@
       <% end %>
 
       <div class="actions">
-        <%= f.submit "log in" %>
+        <%= f.submit "Log in" %>
       </div>
     <% end %>
 

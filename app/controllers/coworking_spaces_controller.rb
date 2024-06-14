@@ -1,6 +1,7 @@
 class CoworkingSpacesController < ApplicationController
   def index
     @coworking_spaces = CoworkingSpace.all
+    @user = current_user
   end
 
   def show
