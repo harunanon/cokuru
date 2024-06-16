@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :set_coworking_space
+  before_action :authenticate_user!
 
   def new
     @coworking_space = CoworkingSpace.find(params[:coworking_space_id])
@@ -17,6 +18,10 @@ class ReservationsController < ApplicationController
   end
 
   private
+  
+  def set_coworking_space
+    @coworking_space = CoworkingSpace.find(params[:coworking_space_id])
+  end
 
   def reservation_params
     params.require(:reservation).permit(:user_id, :start_time, :end_time)
