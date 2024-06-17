@@ -55,7 +55,13 @@ body, html {
   text-align: center;
   color: #ffffff;
 }
+.full-screen-image .container {
+  z-index: 1;
+}
 
+.full-screen-image .container .content {
+  color: black;
+}
 .image-overlay {
   position: absolute;
   top: 0;
@@ -136,9 +142,7 @@ body, html {
 
 /* Footer styles */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  margin-top: 2rem;
   width: 100%;
   background-color: #f8f9fa;
   text-align: center;
