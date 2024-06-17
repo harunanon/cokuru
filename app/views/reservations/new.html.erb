@@ -1,6 +1,28 @@
-<h2>予約ページ<h2>
-<%= form_with model: @reservation do |f|%>
-  <%= f.label :"予約日" %>
-  <%= f.date_field :reservation_date %>
-  <%= f.submit "予約する" %>
+<h1>New Reservation for <%= @coworking_space.name %></h1>
+
+<%= form_with(model: [@coworking_space, @reservation], local: true) do |form| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+      <ul>
+        <% @reservation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.datetime_select :start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.datetime_select :end_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>
