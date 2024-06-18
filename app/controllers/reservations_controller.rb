@@ -2,6 +2,10 @@ class ReservationsController < ApplicationController
   before_action :set_coworking_space
   before_action :authenticate_user!
 
+  def index
+    @reservations = Reservation.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
+  end
+
   def new
     @coworking_space = CoworkingSpace.find(params[:coworking_space_id])
     @reservation = @coworking_space.reservations.build
@@ -18,7 +22,7 @@ class ReservationsController < ApplicationController
   end
 
   private
-  
+
   def set_coworking_space
     @coworking_space = CoworkingSpace.find(params[:coworking_space_id])
   end

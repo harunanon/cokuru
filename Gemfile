@@ -90,3 +90,5 @@ gem 'jquery-rails'
 gem "sassc-rails" 
 
 gem 'mini_racer', platforms: :ruby
+
+gem "simple_calendar", "~> 2.0"
