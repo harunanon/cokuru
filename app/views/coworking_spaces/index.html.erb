@@ -40,7 +40,7 @@
 <div class="coworking-spaces"> <!-- クラスを追加 -->
   <% @coworking_spaces.each do |coworking_space| %>
   <div class="coworking-space">
-    <%= image_tag 'conference room style.jpeg', alt: 'conference room style' %>
+    <%= image_tag coworking_space.image, alt: 'default_image.jpeg' %>
     <h2><%= coworking_space.name %></h2>
     <p><%= coworking_space.location %></p>
     <p><%= number_to_currency(coworking_space.price) %></p>
