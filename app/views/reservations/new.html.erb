@@ -1,29 +1,60 @@
-<h1>New Reservation for <%= @coworking_space.name %></h1>
+<!DOCTYPE html>
+<html>
+ 
+  <head>
+    <meta charset="utf-8">
+    <title>COKURU</title>
+  </head>
 
-<%= form_with(model: [@coworking_space, @reservation], local: true) do |form| %>
-  <% if @reservation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
-      <ul>
-        <% @reservation.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <body class="reservations-new">
+
+  <div class="container">
+  <div class="row">
+      <div class="col-12 text-center title">
+      <h1>新規予約画面</h1>
+      </div>
+
+    <div class="col-12 mt-3 content">
+       <% if flash[:notice] %>
+        <div class="flash-alert">
+          <p><%= flash[:notice] %></p>
+        </div>
+       <% end %>
+       <%= form_with model: [@coworking_space, @reservation], local: true, class: 'form' do |form| %>
+       <%= render 'devise/shared/error_messages', resource: form.object %>
+
+      <div class="seat form-group">
+        <%= form.label :seat_type, '席のタイプ' %>
+        <%= form.text_field :seat_type, class: 'form-control', value: @seat_type %>
+          <%= form.select :seat_type_id, [['タイプA',1],['タイプB',2],['タイプC',3]], {class:"select-box", id:"seat_type"}%>
+      </div>
+
+      <div class="day form-group">
+        <%= form.label :day, '日付' %>
+        <%= form.date_field :day, class: 'form-control', value: @day %>
+      </div>
+<div class="time form-group">
+  <%= form.label :time, '時間' %>
+  <% if @time.present? %>
+    <% begin %>
+      <% parsed_time = Time.parse(@time) %>
+      <%= form.time_field :time, class: 'form-control', value: parsed_time.strftime("%H:%M") %>
+    <% rescue ArgumentError %>
+      <%= form.time_field :time, class: 'form-control', value: @time %>
+    <% end %>
+  <% else %>
+    <%= form.time_field :time, class: 'form-control' %>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
+       <div class="submit">
+        <%= form.submit value: '予約する', class: 'btn btn-primary mx-auto d-block' %>
+       </div>
+       <% end %>
+    <div class="col-12 text-right">
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.datetime_select :end_time %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
-<% end %>
-
+</body>
+</html>
