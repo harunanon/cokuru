@@ -9,6 +9,8 @@
 
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+   <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' %>
+  <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js' %>
 </head>
 <body>
   <div class="header">
@@ -16,7 +18,7 @@
       <nav class="nav-links">
         <% if user_signed_in? %>
           <span class="welcome-message">Welcome! <%= current_user.name %></span>
-         <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
         <% else %>
           <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
           <%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %>
@@ -31,36 +33,90 @@
     <div class="content">
       <h1 class="title">COKURU COWORKING SPACES</h1>
       <p class="subtitle">Your perfect coworking space is just a click away!</p>
-      
     </div>
   </div>
     <div class="image-overlay"></div>
   </div>
-  
-<div class="coworking-spaces"> <!-- クラスを追加 -->
-  <% @coworking_spaces.each do |coworking_space| %>
-  <div class="coworking-space">
-    <%= image_tag coworking_space.image, alt: 'default_image.jpeg' %>
-    <h2><%= coworking_space.name %></h2>
-    <p><%= coworking_space.location %></p>
-    <p><%= number_to_currency(coworking_space.price) %></p>
-    <!-- 他のコワーキングスペースの詳細情報を表示する場合の例 -->
-    <p><%= coworking_space.description %></p>
-    
-    <!-- 画像の表示など、必要に応じて他の詳細情報を表示 -->
-    <%= link_to "View Details", coworking_space %>
-      <%= link_to "予約する", new_coworking_space_reservation_path(coworking_space), class: 'btn btn-secondary' %>
-  </div>
-<% end %> 
-  </div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
 
-
- 
-
+<%= week_calendar events: @reservations || [] do |date, reservations| %>
+    <%= date.day %>
+<% end %>
   <div class="footer">
     <div class="footer-content">
       <p>&copy; 2024 COKURU COWORKING SPACES. All rights reserved.</p>
     </div>
   </div>
+
+  
+  <div class="modal" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+    <div class="row">
+      <div class="col-12 text-center title">
+        <h1>新規予約画面</h1>
+      </div>
+
+      <div class="col-12 mt-3 content">
+        <% if flash[:notice] %>
+          <div class="flash-alert">
+            <p><%= flash[:notice] %></p>
+          </div>
+        <% end %>
+
+        <%= form_with model: @reservation, local: true do |form| %>
+          <div class="seat form-group">
+            <%= form.label :seat_type, '席のタイプ' %>
+            <%= form.text_field :seat_type, class: 'form-control', value: @seat_type %>
+            <%= form.select :seat_type_id, [['タイプA',1],['タイプB',2],['タイプC',3]], {class:"select-box", id:"seat_type"}%>
+          </div>
+
+          <div class="day form-group">
+            <%= form.label :day, '日付' %>
+            <%= form.date_field :day, class: 'form-control', value: @day %>
+          </div>
+
+          <div class="time form-group">
+            <%= form.label :time, '時間' %>
+            <% if @time.present? %>
+              <% begin %>
+                <% parsed_time = Time.parse(@time) %>
+                <%= form.time_field :time, class: 'form-control', value: parsed_time.strftime("%H:%M") %>
+              <% rescue ArgumentError %>
+                <%= form.time_field :time, class: 'form-control', value: @time %>
+              <% end %>
+            <% else %>
+              <%= form.time_field :time, class: 'form-control' %>
+            <% end %>
+          </div>
+
+          <div class="submit">
+            <%= form.submit '予約する', class: 'btn btn-primary mx-auto d-block' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-12 text-right">
+      </div>
+    </div>
+  </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
