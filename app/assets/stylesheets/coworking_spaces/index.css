@@ -108,39 +108,116 @@ body, html {
 }
 
 /* Coworking spaces */
-.coworking-spaces {
+.heading h2 {
+  font-weight: normal;
+}
+
+.heading-name {
+  text-align: center;
+  padding: 0 0 15px 0;
+}
+
+.seat {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  width: 25%;
 }
 
-.coworking-space {
-  width: 300px;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: left;
+.seat-list {
   display: flex;
-  justify-content: center;
-  flex-direction: column; /* 内容を縦に並べる */
+  justify-content: space-around;
+  margin: 30px 0;
 }
 
-.coworking-space h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.seat-name1 {
+  position: absolute;
+  top: -10%;
+  left: 45%;
+  transform: translate(-50%,-50%);
+  font-size: 16px;
+  display: inline-block;
+  color: rgb(33, 30, 34);
+  background-color: yellow;
+}
+.seat-name2 {
+  position: absolute;
+  width: 60%;
+  top: -10%;
+  left: 45%;
+  transform: translate(-50%,-50%);
+  font-size: 16px;
+  display: inline-block;
+  color: rgb(33, 30, 34);
+  background-color: orange;
 }
 
-.coworking-space p {
-  margin-bottom: 10px;
+.seat-name3 {
+  position: absolute;
+  top: -10%;
+  left: 45%;
+  transform: translate(-50%,-50%);
+  font-size: 16px;
+  display: inline-block;
+  color: rgb(33, 30, 34);
+  background-color: rgb(101, 237, 101);
 }
 
-.coworking-space .btn {
-  display: block;
-  width: 100%;
-  margin-top: 10px;
-  box-sizing: border-box;
+.seat-image {
+  height: 250px;
+  width: 250px;
 }
+.txt-contents1 {
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  width: 70%;
+  display: inline-block;
+  margin: 20px;
+  font-size: 14px;
+  color: #161517;
+  }
+
+.txt-contents2 {
+  position: absolute;
+  top: 100%;
+  left: 23%;
+  width: 75%;
+  display: inline-block;
+  margin: 20px;
+  font-size: 14px;
+  color: #161517;
+  }
+
+  .txt-contents3 {
+    position: absolute;
+    top: 100%;
+    left: 1%;
+    width: 80%;
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+    font-size: 14px;
+    color: #161517;
+    }
+
+    .row {
+      margin-bottom:55px;
+    }
+    
+    .hero h1 {
+     margin-left: 30px;
+     font-weight: normal;
+     display: flex;
+    }
+    
+    .col-12 text-center p {
+     padding-bottom: 40px;
+    }
+    
+    
+    footer img {
+      width: 125Px;
+    }    
 
 /* Footer styles */
 .footer {
