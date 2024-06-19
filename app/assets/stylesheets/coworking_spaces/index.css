@@ -137,7 +137,7 @@ body, html {
   font-size: 16px;
   display: inline-block;
   color: rgb(33, 30, 34);
-  background-color: yellow;
+  background-color: pink;
 }
 .seat-name2 {
   position: absolute;
@@ -148,7 +148,7 @@ body, html {
   font-size: 16px;
   display: inline-block;
   color: rgb(33, 30, 34);
-  background-color: orange;
+  background-color: yellow;
 }
 
 .seat-name3 {
@@ -159,7 +159,7 @@ body, html {
   font-size: 16px;
   display: inline-block;
   color: rgb(33, 30, 34);
-  background-color: rgb(101, 237, 101);
+  background-color: blue;
 }
 
 .seat-image {
@@ -169,7 +169,6 @@ body, html {
 .txt-contents1 {
   position: absolute;
   top: 100%;
-  left: 25%;
   width: 70%;
   display: inline-block;
   margin: 20px;
@@ -180,7 +179,6 @@ body, html {
 .txt-contents2 {
   position: absolute;
   top: 100%;
-  left: 23%;
   width: 75%;
   display: inline-block;
   margin: 20px;
@@ -191,7 +189,6 @@ body, html {
   .txt-contents3 {
     position: absolute;
     top: 100%;
-    left: 1%;
     width: 80%;
     display: inline-block;
     text-align: center;

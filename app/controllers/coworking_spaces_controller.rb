@@ -2,6 +2,8 @@ class CoworkingSpacesController < ApplicationController
   def index
     @coworking_spaces = CoworkingSpace.all
     @user = current_user
+    @coworking_space = CoworkingSpace.first # 必要に応じて適切に設定
+    @reservations = Reservation.all
   end
 
   def show

@@ -12,7 +12,6 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <!-- 追加 -->
         <th>時間</th>
         <% date_range.slice(0, 7).each do |day| %>
           <th><%= t('date.abbr_day_names')[day.wday] %></th>
@@ -28,12 +27,34 @@
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                 <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
               <% else %>
-               <% passed_block.call day, sorted_events.fetch(day, []) %>
+                <% passed_block.call day, sorted_events.fetch(day, []) %>
               <% end %>
             <% end %>
           <% end %>
         </tr>
-       
+
+        <% times.each do |time| %>
+          <tr>
+            <td><%= time %></td>
+            <% week.each do |day| %>
+              <td>
+                <% reservation = find_reservation(@reservations, day, time) %>
+                <% if reservation %>
+                  <% seat_type_name = reservation.seat_type.name %> 
+                  <%= seat_type_name %>
+                <% else %>
+                   <% if @coworking_space %>
+                    <%= link_to new_coworking_space_reservation_path(@coworking_space, day: day, time: time) do %>
+                      <%= '○' %>
+                    <% end %>
+                  <% else %>
+                    <%= '○' %>
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
