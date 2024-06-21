@@ -9,6 +9,8 @@ class ReservationsController < ApplicationController
   def new
     @coworking_space = CoworkingSpace.find(params[:coworking_space_id])
     @reservation = @coworking_space.reservations.build
+    @day = params[:day]
+    @time = params[:time]
   end
 
   def create

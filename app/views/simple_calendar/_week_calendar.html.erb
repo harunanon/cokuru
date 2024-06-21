@@ -43,10 +43,10 @@
                   <% seat_type_name = reservation.seat_type.name %> 
                   <%= seat_type_name %>
                 <% else %>
-                   <% if @coworking_space %>
-                    <%= link_to new_coworking_space_reservation_path(@coworking_space, day: day, time: time) do %>
-                      <%= '○' %>
-                    <% end %>
+                  <% if @coworking_space %>
+                    <%= link_to new_coworking_space_reservation_path(@coworking_space, day: day, time: time) do %> 
+                     <%= '○' %>
+                     <% end %>
                   <% else %>
                     <%= '○' %>
                   <% end %>
@@ -59,3 +59,6 @@
     </tbody>
   </table>
 </div>
+
+
+ 
