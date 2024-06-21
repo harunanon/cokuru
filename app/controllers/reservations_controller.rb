@@ -7,13 +7,18 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @reservation = Reservation.new
+    @reservation = @coworking_space.reservations.build
     @day = params[:day]
     @time = params[:time]
   end
   def create
     @reservation = current_user.reservations.build(reservation_params)
     @time = reservation_params[:time]
+    if @reservation.save
+      redirect_to @coworking_space, notice: 'Reservation was successfully created.'
+    else
+      render :new
+    end
     if @time.present?
       begin
         parsed_time = Time.parse(@time)
@@ -25,11 +30,6 @@ class ReservationsController < ApplicationController
     if @reservation.seat_type_id == 1
       flash[:notice] = '席のタイプを選択してください。'
     else
-      if @reservation.save
-        redirect_to reservation_path(@reservation.id)
-      else
-        render :new, status: :unprocessable_entity
-      end
     end
   end
 
