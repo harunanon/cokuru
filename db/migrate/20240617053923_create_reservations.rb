@@ -1,13 +1,13 @@
 class CreateReservations < ActiveRecord::Migration[7.0]
   def change
     create_table :reservations do |t|
-      t.references :user, null: false, foreign_key: true
-      t.references :coworking_space, null: false, foreign_key: true
-      t.datetime :start_time, null: false
-      t.datetime :end_time, null: false
-      t.string :user_name
-
-      t.timestamps
+    t.date :day,              null: false
+    t.string :time,           null: false
+    t.integer :seat_type_id,  null:false
+    t.bigint :user_id,        null: false
+    t.datetime :start_time,   null: false
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+    t.timestamps
     end
   end
 end

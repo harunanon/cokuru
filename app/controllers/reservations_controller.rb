@@ -7,21 +7,34 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @coworking_space = CoworkingSpace.find(params[:coworking_space_id])
-    @reservation = @coworking_space.reservations.build
+    @reservation = Reservation.new
     @day = params[:day]
     @time = params[:time]
   end
-
   def create
-    @coworking_space = CoworkingSpace.find(params[:coworking_space_id])
-    @reservation = @coworking_space.reservations.build(reservation_params)
-    if @reservation.save
-      redirect_to @coworking_space, notice: 'Reservation was successfully created.'
+    @reservation = current_user.reservations.build(reservation_params)
+    @time = reservation_params[:time]
+    if @time.present?
+      begin
+        parsed_time = Time.parse(@time)
+        @reservation.start_time = DateTime.new(@reservation.day.year, @reservation.day.month, @reservation.day.day, parsed_time.hour, parsed_time.min)
+      rescue ArgumentError
+        flash[:error] = "Invalid time format"
+      end
+    end
+    if @reservation.seat_type_id == 1
+      flash[:notice] = '席のタイプを選択してください。'
     else
-      render :new
+      if @reservation.save
+        redirect_to reservation_path(@reservation.id)
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
+
+
+
 
   private
 
@@ -30,6 +43,6 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:user_id, :start_time, :end_time)
+    params.require(:reservation).permit(:day, :time, :user_id, :start_time, :seat_type_id)
   end
 end
