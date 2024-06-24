@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @reservation = @coworking_space.reservations.build
+    # @reservation = @coworking_space.reservations.build
     @day = params[:day]
     @time = params[:time]
   end
@@ -15,14 +15,17 @@ class ReservationsController < ApplicationController
     @reservation = current_user.reservations.build(reservation_params)
     @time = reservation_params[:time]
     if @reservation.save
-      redirect_to @coworking_space, notice: 'Reservation was successfully created.'
+      flash[:notice] = '200'
+      render :new, status: 200
+      # redirect_to @coworking_space, notice: 'Reservation was successfully created.'
     else
-      render :new
+      flash[:notice] = '500'
+      render :new, status: 500
     end
     if @time.present?
       begin
         parsed_time = Time.parse(@time)
-        @reservation.start_time = DateTime.new(@reservation.day.year, @reservation.day.month, @reservation.day.day, parsed_time.hour, parsed_time.min)
+        @reservation.start_time = DateTime.new(2024, 6, 24, parsed_time.hour, parsed_time.min)
       rescue ArgumentError
         flash[:error] = "Invalid time format"
       end
@@ -43,6 +46,6 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:day, :time, :user_id, :start_time, :seat_type_id)
+    params.permit(:day, :time, :user_id, :start_time, :seat_type_id)
   end
 end
