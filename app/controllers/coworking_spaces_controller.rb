@@ -4,6 +4,10 @@ class CoworkingSpacesController < ApplicationController
     @user = current_user
     @coworking_space = CoworkingSpace.first # 必要に応じて適切に設定
     @reservations = Reservation.all
+    if @coworking_spaces.empty?
+      flash[:alert] = "No coworking spaces available."
+      redirect_to new_coworking_space_path
+    end
   end
 
   def show
@@ -27,5 +31,12 @@ class CoworkingSpacesController < ApplicationController
 
   def coworking_space_params
     params.require(:coworking_space).permit(:name, :address, :description, :price, :amenities, :admin_id)
+  end
+end
+def set_coworking_space
+  @coworking_space = CoworkingSpace.first
+  if @coworking_space.nil?
+    flash[:alert] = "No coworking spaces available."
+    redirect_to new_coworking_space_path
   end
 end
