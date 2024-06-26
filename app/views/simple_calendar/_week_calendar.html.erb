@@ -44,9 +44,13 @@
                   <% seat_type_name = seat_type_list_name[reservation.seat_type_id] %>
                   <%= seat_type_name %>
                 <% else %>
+                <% if @coworking_space.present? %>
                     <%= link_to new_coworking_space_reservation_path(@coworking_space, day: day, time: time) do %> 
                      <%= '○' %>
                      <% end %>
+                     <% else %>
+            <%= 'No coworking space available' %>
+          <% end %>
                 <% end %>
               </td>
             <% end %>
