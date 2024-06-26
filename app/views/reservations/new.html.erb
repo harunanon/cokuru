@@ -20,14 +20,14 @@
           <p><%= flash[:notice] %></p>
         </div>
        <% end %>
-       <%= form_with url: coworking_space_reservations_path, local: true, class: 'form' do |form| %>
-       <%# <%= render 'devise/shared/error_messages', resource: form.object %> 
-       <%= form.object %>
+       <%= form_with model: @reservation, url: coworking_space_reservations_path, local: true, class: 'form' do |form| %>
+        <%= render 'devise/shared/error_messages', resource: form.object %> 
+       
 
       <div class="seat form-group">
         <%= form.label :seat_type, '席のタイプ' %>
         <%= form.text_field :seat_type, class: 'form-control', value: @seat_type %>
-          <%= form.select :seat_type_id, [['タイプA',1],['タイプB',2],['タイプC',3]], {class:"select-box", id:"seat_type"}%>
+          <%= form.select :seat_type_id, [['選択してください',0],['タイプA',1],['タイプB',2],['タイプC',3]], {class:"select-box", id:"seat_type"}%>
       </div>
 
       <div class="day form-group">

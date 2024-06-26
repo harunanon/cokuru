@@ -30,6 +30,7 @@ body, html {
 .nav-links {
   display: flex;
   gap: 20px;
+  color: white;
 }
 
 .nav-link {
@@ -62,7 +63,7 @@ body, html {
 .full-screen-image .container .content {
   color: black;
 }
-.full-screen-image .container {
+.full-screen-image .card {
   z-index: 1;
 }
 .image-overlay {
@@ -81,6 +82,10 @@ body, html {
   padding: 20px;
 }
 
+.seat-wrapper .container {
+  background-color: transparent;
+  box-shadow: none;
+}
 .content {
   max-width: 600px;
   margin: 0 auto;

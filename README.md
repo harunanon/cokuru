@@ -32,6 +32,8 @@ has_many :coworking_spaces, through: :reservations
 | day                | date     | null:false                       |
 | time               | datetime | null:false                       |
 | start_time         | datetime | null:false                       |
+| created_at         | datetime | null:false                       |
+| updated_at         | datetime | null:false                       |
 
 ### Association
 belongs_to :user

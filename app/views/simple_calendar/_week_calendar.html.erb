@@ -1,4 +1,5 @@
-<div class="simple-calendar">
+<% seat_type_list_name = { 1 => "タイプA", 2 => "タイプB", 3 => "タイプC" } %>
+<div class="simple-calendar"> 
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: '前週'), calendar.url_for_previous_view %>
     <% if calendar.number_of_weeks == 1 %>
@@ -40,7 +41,7 @@
               <td>
                 <% reservation = find_reservation(@reservations, day, time) %>
                 <% if reservation %>
-                  <% seat_type_name = reservation.seat_type.name %> 
+                  <% seat_type_name = seat_type_list_name[reservation.seat_type_id] %>
                   <%= seat_type_name %>
                 <% else %>
                     <%= link_to new_coworking_space_reservation_path(@coworking_space, day: day, time: time) do %> 

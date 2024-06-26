@@ -21,7 +21,7 @@ p {
 }
 
 .title h1 {
-  color: #a95320; /* 例: 文字色を青に設定 */
+  color: #a95320; 
   font-size: 5rem; 
   text-align: center; 
 }
@@ -67,16 +67,16 @@ p {
 }
 
 label[for='reservation_time'] {
-  color: black;    /* テキストカラーを青に設定 */
-  font-size: 18px; /* フォントサイズを20pxに設定 */
-  margin-top: 20px; /* 上側の余白を10pxに設定 */
+  color: black;    
+  font-size: 18px; 
+  margin-top: 20px; 
   padding-right: 48px;
 }
 
 label[for='reservation_seat_type'] {
-  color: blue;    /* テキストカラーを青に設定 */
-  font-size: 15px; /* フォントサイズを20pxに設定 */
-  margin-top: 20px; /* 上側の余白を10pxに設定 */
+  color: blue;    
+  font-size: 15px; 
+  margin-top: 20px; 
   padding: 10px;
 }
 
