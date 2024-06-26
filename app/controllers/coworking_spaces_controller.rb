@@ -7,7 +7,7 @@ class CoworkingSpacesController < ApplicationController
     # if @coworking_spaces.empty?
       # flash[:alert] = "No coworking spaces available."
       # redirect_to root_path
-    end
+    # end
   end
 
   def show
