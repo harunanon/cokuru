@@ -4,9 +4,9 @@ class CoworkingSpacesController < ApplicationController
     @user = current_user
     @coworking_space = CoworkingSpace.first # 必要に応じて適切に設定
     @reservations = Reservation.all
-    if @coworking_spaces.empty?
-      flash[:alert] = "No coworking spaces available."
-      redirect_to root_path
+    # if @coworking_spaces.empty?
+      # flash[:alert] = "No coworking spaces available."
+      # redirect_to root_path
     end
   end
 
