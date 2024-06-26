@@ -6,7 +6,7 @@ class CoworkingSpacesController < ApplicationController
     @reservations = Reservation.all
     if @coworking_spaces.empty?
       flash[:alert] = "No coworking spaces available."
-      redirect_to new_coworking_space_path
+      redirect_to root_path
     end
   end
 
@@ -37,6 +37,6 @@ def set_coworking_space
   @coworking_space = CoworkingSpace.first
   if @coworking_space.nil?
     flash[:alert] = "No coworking spaces available."
-    redirect_to new_coworking_space_path
+    redirect_to root_path
   end
 end
