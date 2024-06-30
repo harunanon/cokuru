@@ -5,9 +5,9 @@ cokuru
 コワーキングスペースを席のタイプごとに日時指定していつでも予約・決済できる。
 
 # URL
-https://cokuru.onrender.com/
-・Basic認証パスワード：2222
-・Basic認証ID：admin
+https://cokuru.onrender.com/<br>
+・Basic認証パスワード：2222<br>
+・Basic認証ID：admin<br>
 
 # Usersテーブル　（ユーザー管理機能）
 | Column             | Type     | Options                  |
@@ -20,7 +20,7 @@ https://cokuru.onrender.com/
 | updated_at         | datetime | null:false               |
 
 ### Association
-has_many :reservations
+has_many :reservations<br>
 has_many :coworking_spaces, through: :reservations
 
 
@@ -36,7 +36,7 @@ has_many :coworking_spaces, through: :reservations
 | updated_at         | datetime | null:false                       |
 
 ### Association
-belongs_to :user
+belongs_to :user<br>
 belongs_to :coworking_space
 
 # ER図
@@ -44,14 +44,14 @@ belongs_to :coworking_space
 
 # 開発環境
 ・フロントエンド：HTML/CSS 、Javascripts<br>
-・バックエンド：Ruby, Ruby on Rails 7.0
-・インフラ：Render
-・テキストエディタ：VSCode
+・バックエンド：Ruby, Ruby on Rails 7.0<br>
+・インフラ：Render<br>
+・テキストエディタ：VSCode<br>
 
 # ローカルでの動作方法
-% git clone https://github.com/harunanon/cokuru
-% cd ~/projects/
-% cd cokuru
+% git clone https://github.com/harunanon/cokuru<br>
+% cd ~/projects/<br>
+% cd cokuru<br>
 
 # 制作時間
 100時間
