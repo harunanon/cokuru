@@ -38,3 +38,20 @@ has_many :coworking_spaces, through: :reservations
 ### Association
 belongs_to :user
 belongs_to :coworking_space
+
+# ER図
+![alt text](ER図.jpg)
+
+# 開発環境
+・フロントエンド：HTML/CSS 、Javascripts
+・バックエンド：Ruby, Ruby on Rails 7.0
+・インフラ：Render
+・テキストエディタ：VSCode
+
+# ローカルでの動作方法
+% git clone https://github.com/harunanon/cokuru
+% cd ~/projects/
+% cd cokuru
+
+# 制作時間
+100時間
