@@ -43,7 +43,7 @@ belongs_to :coworking_space
 ![alt text](ER図.jpg)
 
 # 開発環境
-・フロントエンド：HTML/CSS 、Javascripts
+・フロントエンド：HTML/CSS 、Javascripts<br>
 ・バックエンド：Ruby, Ruby on Rails 7.0
 ・インフラ：Render
 ・テキストエディタ：VSCode
